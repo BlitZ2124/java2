@@ -1,0 +1,219 @@
+package final_grade_gui;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Image;
+import java.awt.Font;
+import java.awt.Color;
+import javax.swing.SwingConstants;
+public class final_grade_ui {
+
+	private JFrame frame;
+	private JTextField gwaTF;
+	private JTextField gwaequiv;
+	private JTextField prilemTF;
+	private JTextField midtermTF;
+	private JTextField prefTF;
+	private JTextField finalTF;
+	private ImageIcon thisImage;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					final_grade_ui window = new final_grade_ui();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public final_grade_ui() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.getContentPane().setBackground(new Color(153, 50, 204));
+		frame.setBounds(100, 100, 632, 429);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JLabel lblPhilippineCountryvilleCollage = new JLabel("PHILIPPINE COUNTRYVILLE COLLAGE");
+		lblPhilippineCountryvilleCollage.setForeground(new Color(255, 255, 255));
+		lblPhilippineCountryvilleCollage.setFont(new Font("Tahoma", Font.BOLD, 30));
+		lblPhilippineCountryvilleCollage.setBounds(20, 11, 596, 40);
+		frame.getContentPane().add(lblPhilippineCountryvilleCollage);
+		
+		JLabel lblMidterm = new JLabel("MIDTERM");
+		lblMidterm.setForeground(new Color(0, 255, 0));
+		lblMidterm.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblMidterm.setBounds(9, 175, 112, 14);
+		frame.getContentPane().add(lblMidterm);
+		
+		JLabel lblNewLabel = new JLabel("PRELIM");
+		lblNewLabel.setForeground(new Color(0, 255, 0));
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblNewLabel.setBounds(9, 139, 99, 14);
+		frame.getContentPane().add(lblNewLabel);
+		
+		JLabel lblPreFinal = new JLabel("PRE FINAL");
+		lblPreFinal.setForeground(new Color(0, 255, 0));
+		lblPreFinal.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblPreFinal.setBounds(12, 212, 136, 14);
+		frame.getContentPane().add(lblPreFinal);
+		
+		JLabel lblFinal = new JLabel("FINAL");
+		lblFinal.setForeground(new Color(0, 255, 0));
+		lblFinal.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblFinal.setBounds(22, 252, 99, 14);
+		frame.getContentPane().add(lblFinal);
+		
+		JButton btnNewButton = new JButton("CALCULATE");
+		btnNewButton.setBackground(new Color(0, 255, 0));
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				String aa, bb, cc, dd, ff,equiv;
+				double a, b, c, d, f;
+				
+				aa= prilemTF.getText();
+				bb= midtermTF.getText();
+				cc= prefTF.getText();
+				dd= finalTF.getText();
+				
+				a = Double.parseDouble(aa);
+				b = Double.parseDouble(bb);
+				c = Double.parseDouble(cc);
+				d = Double.parseDouble(dd);
+				
+				f = (a+b+c+d)/4;
+				f=(double) (Math.round(f*100.0)/100.0);
+				
+				if (f>=101)
+					equiv= "Invalid grade";
+				else if (f>=97.5&&f<=100)
+					equiv="1.00";
+				else if (f>=95.5&& f<=97.4) 
+					equiv="1.25";
+				else if (f>=91.5&& f<=95.4) 
+					equiv="1.5";
+				else if (f>=88.5&& f<=91.4) 
+					equiv="1.75";
+				else if (f>=95.5&& f<=88.4) 
+					equiv="2.0";
+				else if (f>=82.5&& f<=85.4) 
+					equiv="2.25";
+				else if (f>=79.5&& f<=82.4) 
+					equiv="2.5";
+				else if (f>=76.5&& f<=79.4) 
+					equiv="2.75";
+				else if (f>=74.5&& f<=76.4) 
+					equiv="3.0";
+				else
+					equiv="5.0";
+				ff =Double.toString(f);
+				gwaTF.setText(ff);
+				gwaequiv.setText(equiv);
+			}
+		});
+		btnNewButton.setBounds(0, 295, 161, 23);
+		frame.getContentPane().add(btnNewButton);
+		
+		JLabel lblNewLabel_1 = new JLabel("FINAL GRADE:");
+		lblNewLabel_1.setForeground(new Color(0, 255, 0));
+		lblNewLabel_1.setBackground(new Color(0, 255, 0));
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblNewLabel_1.setBounds(23, 344, 161, 21);
+		frame.getContentPane().add(lblNewLabel_1);
+		
+		gwaTF = new JTextField();
+		gwaTF.setHorizontalAlignment(SwingConstants.CENTER);
+		gwaTF.setForeground(new Color(255, 255, 255));
+		gwaTF.setFont(new Font("Tahoma", Font.BOLD, 20));
+		gwaTF.setBackground(new Color(0, 0, 0));
+		gwaTF.setBounds(194, 339, 86, 30);
+		frame.getContentPane().add(gwaTF);
+		gwaTF.setColumns(10);
+		
+		JLabel lblNewLabel_2 = new JLabel("EQUIVALENT:");
+		lblNewLabel_2.setForeground(new Color(0, 255, 0));
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblNewLabel_2.setBounds(317, 339, 143, 31);
+		frame.getContentPane().add(lblNewLabel_2);
+		
+		gwaequiv = new JTextField();
+		gwaequiv.setHorizontalAlignment(SwingConstants.CENTER);
+		gwaequiv.setForeground(new Color(255, 255, 255));
+		gwaequiv.setFont(new Font("Tahoma", Font.BOLD, 20));
+		gwaequiv.setBackground(new Color(0, 0, 0));
+		gwaequiv.setBounds(470, 339, 75, 30);
+		frame.getContentPane().add(gwaequiv);
+		gwaequiv.setColumns(10);
+		
+		prilemTF = new JTextField();
+		prilemTF.setHorizontalAlignment(SwingConstants.CENTER);
+		prilemTF.setForeground(new Color(255, 255, 255));
+		prilemTF.setFont(new Font("Tahoma", Font.BOLD, 20));
+		prilemTF.setBackground(new Color(0, 0, 0));
+		prilemTF.setBounds(169, 131, 86, 31);
+		frame.getContentPane().add(prilemTF);
+		prilemTF.setColumns(10);
+		
+		midtermTF = new JTextField();
+		midtermTF.setHorizontalAlignment(SwingConstants.CENTER);
+		midtermTF.setForeground(new Color(255, 255, 255));
+		midtermTF.setFont(new Font("Tahoma", Font.BOLD, 20));
+		midtermTF.setBackground(new Color(0, 0, 0));
+		midtermTF.setBounds(264, 167, 86, 31);
+		frame.getContentPane().add(midtermTF);
+		midtermTF.setColumns(10);
+		
+		prefTF = new JTextField();
+		prefTF.setHorizontalAlignment(SwingConstants.CENTER);
+		prefTF.setForeground(new Color(255, 255, 255));
+		prefTF.setFont(new Font("Tahoma", Font.BOLD, 20));
+		prefTF.setBackground(new Color(0, 0, 0));
+		prefTF.setBounds(359, 204, 86, 31);
+		frame.getContentPane().add(prefTF);
+		prefTF.setColumns(10);
+		
+		finalTF = new JTextField();
+		finalTF.setHorizontalAlignment(SwingConstants.CENTER);
+		finalTF.setForeground(new Color(255, 255, 255));
+		finalTF.setFont(new Font("Tahoma", Font.BOLD, 20));
+		finalTF.setBackground(new Color(0, 0, 0));
+		finalTF.setBounds(459, 244, 86, 31);
+		frame.getContentPane().add(finalTF);
+		finalTF.setColumns(10);
+		
+		JLabel lblNewLabel_3 = new JLabel("P2b, Sayre Highway, Panadtalan, Maramag Bukidnon");
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.ITALIC, 15));
+		lblNewLabel_3.setBounds(148, 44, 413, 23);
+		frame.getContentPane().add(lblNewLabel_3);
+		
+		
+		thisImage = new ImageIcon("pcc logo.jpg.png.png");
+		
+		
+	}
+}
